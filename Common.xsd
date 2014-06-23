@@ -1,4 +1,4 @@
-<xsd:schema targetNamespace="urn:privacymy-schema" xmlns="urn:privacymy-schema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+<xsd:schema targetNamespace="urn:my-schema" xmlns="urn:my-schema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
   <xsd:element name="envelope" type="myEnvelope"/>
   <xsd:complexType name="myEnvelope">
     <xsd:sequence maxOccurs="unbounded">
