@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pa:envelope xmlns:pa="urn:my-schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <pa:body>
+    <pa:codeUser>
+      <pa:code>GS00107</pa:code>
+      <pa:type>BO</pa:type>
+    </pa:codeUser>
+    <pa:codeApplication>AMC</pa:codeApplication>
+    <pa:codeOperation>
+      <pa:code>General_Information</pa:code>
+      <pa:type>I</pa:type>
+    </pa:codeOperation>
+    <pa:codeWorkstation>
+      <pa:code>WKS-LANIBALDI</pa:code>
+      <pa:type>06</pa:type>
+    </pa:codeWorkstation>
+    <pa:dateRef>2012-09-28T00:00:00</pa:dateRef>
+    <pa:dateAccess>2014-03-19T10:08:18</pa:dateAccess>
+    <pa:items>
+      <pa:item>
+        <pa:code>ALL</pa:code>
+        <pa:codeType>OR</pa:codeType>
+        <pa:type>HOL</pa:type>
+      </pa:item>
+    </pa:items>
+  </pa:body>
+</pa:envelope>
