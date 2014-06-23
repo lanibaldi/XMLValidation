@@ -1,0 +1,89 @@
+<xsd:schema targetNamespace="urn:privacymy-schema" xmlns="urn:privacymy-schema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xsd:element name="envelope" type="myEnvelope"/>
+  <xsd:complexType name="myEnvelope">
+    <xsd:sequence maxOccurs="unbounded">
+      <xsd:element name="body" type="myBody"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="myBody">
+    <xsd:sequence>
+      <xsd:element name="codeUser" type="myCodeUser" nillable="false"/>
+      <xsd:element name="codeApplication" type="xsd:string" nillable="false"/>
+      <xsd:element name="codeOperation" type="myCodeOperationType" nillable="false"/>
+      <xsd:element name="codeWorkstation" type="myCodeWorkstation" nillable="true"/>
+      <!-- http://www.w3.org/TR/xmlschema-2/#isoformats -->
+      <xsd:element name="dateRef" type="xsd:dateTime" nillable="true"/>
+      <xsd:element name="dateAccess" type="xsd:dateTime" nillable="false"/>
+      <xsd:element name="items" type="myItems" nillable="false"/>
+      <xsd:element name="payload" type="myData" nillable="true" minOccurs="0"/>
+      <xsd:element name="dateQueued" type="xsd:dateTime" nillable="false" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="myWorkstationType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="01"/>
+      <xsd:enumeration value="02"/>
+      <xsd:enumeration value="03"/>
+      <xsd:enumeration value="04"/>
+      <xsd:enumeration value="05"/>
+      <xsd:enumeration value="06"/>
+      <xsd:enumeration value="07"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="myCodeWorkstation">
+    <xsd:sequence minOccurs="1" maxOccurs="1">
+      <xsd:element name="code" type="xsd:string" nillable="false"/>
+      <xsd:element name="type" type="myWorkstationType" nillable="false"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="myCodeType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="BO"/>
+      <xsd:enumeration value="OR"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="myCodeUser">
+    <xsd:sequence minOccurs="1" maxOccurs="1">
+      <xsd:element name="code" type="xsd:string" nillable="false"/>
+      <xsd:element name="type" type="myCodeType" nillable="false"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="myOpType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="I"/>
+      <xsd:enumeration value="IM"/>
+      <xsd:enumeration value="D"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="myCodeOperationType">
+    <xsd:sequence minOccurs="1" maxOccurs="1">
+      <xsd:element name="code" type="xsd:string" nillable="true"/>
+      <xsd:element name="type" type="myOpType" nillable="false"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="myItemType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="CST"/>
+      <xsd:enumeration value="PTF"/>
+      <xsd:enumeration value="HOL"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="myItem">
+    <xsd:sequence maxOccurs="unbounded">
+      <xsd:element name="code" type="xsd:string" default="ALL" nillable="false"/>
+      <xsd:element name="codeType" type="myCodeType" nillable="false"/>
+      <xsd:element name="type" type="myItemType" nillable="false"/>
+    </xsd:sequence>
+    <xsd:attribute name="expand" type="xsd:boolean" use="optional"/>
+  </xsd:complexType>
+  <xsd:complexType name="myItems">
+    <xsd:sequence minOccurs="1" maxOccurs="100">
+      <xsd:element name="item" type="myItem"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="myData" mixed="true">
+    <xsd:sequence>
+      <xsd:any minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>
